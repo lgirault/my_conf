@@ -4,6 +4,7 @@ import XMonad.Actions.UpdatePointer
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.ICCCMFocus
+import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
 import Data.Monoid
 import System.Exit
@@ -378,7 +379,7 @@ main = do
         dzenLBar <- spawnPipe myLXmonadBar
         _ <- spawnPipe myStatusBar
 --	xmproc <- spawnPipe "xmobar"
-	xmonad defaultConfig {
+	xmonad $ docks defaultConfig {
       -- simple stuff
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
