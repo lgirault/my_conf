@@ -1,0 +1,22 @@
+#!/bin/bash
+#
+# ~/.xinitrc
+#
+
+xrandr --output HDMI-0 --mode 2560x1440 --primary
+xrandr --output DVI-D-0 --left-of HDMI-0
+xrandr --dpi 122
+
+#export XDG_CURRENT_DESKTOP=kde
+
+#setxkbmap us -variant altgr-intl
+xmodmap ~/.ergodoxXmodmap
+#twmnd &
+udiskie -2 &
+xset s off
+numlockx on
+
+feh --bg-fill .wallpaper.png
+insync start
+xscreensaver -no-splash &
+redshift -l 48.8567:2.3508 &

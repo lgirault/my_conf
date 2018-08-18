@@ -1,0 +1,37 @@
+
+xterm*faceName: DejaVu Sans Mono for Powerline
+xterm*faceSize: 10
+!xterm*foreground: rgb:00/ff/00
+!xterm*background: rgb:08/08/08
+xterm*utf8: 2
+
+! Hybrid Terminal Colours. Uses the palette from Tomorrow-Night:
+! https://github.com/chriskempson/tomorrow-theme/blob/master/vim/colors/Tomorrow-Night.vim
+! vim: ft=xdefaults
+
+xterm*background: #1D1F21
+xterm*foreground: #C5C8C6
+! black
+xterm*color0: #282A2E
+xterm*color8: #373B41
+! red
+xterm*color1: #A54242
+xterm*color9: #CC6666
+! green
+xterm*color2: #8C9440
+xterm*color10: #B5BD68
+! yellow
+xterm*color3: #DE935F
+xterm*color11: #F0C674
+! blue
+xterm*color4: #5F819D
+xterm*color12: #81A2BE
+! magenta
+xterm*color5: #85678F
+xterm*color13: #B294BB
+! cyan
+xterm*color6: #5E8D87
+xterm*color14: #8ABEB7
+! white
+xterm*color7: #707880
+xterm*color15: #C5C8C6

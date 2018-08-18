@@ -1,0 +1,25 @@
+
+Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
+       , bgColor = "black"
+       , fgColor = "grey"
+       , position = Top
+       , commands = [ Run Weather "LFPO" ["-t"," <tempC>C","-L","10","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
+                    , Run MultiCpu [  "--template", "Cpus <total0>% <total1>% <total2>% <total3>% <total4>% <total5>% <total6>% <total7>% <total8>% <total9>% <total10>% <total11>%"
+                                    , "--Low","3"
+                                    , "--High","70"
+                                    , "--normal","green"
+                                    , "--high","red"] 10
+		                , Run CoreTemp [ "-t", "Temp: <core0> C"
+				                           , "-L", "40", "-H", "60"
+                                   , "-l", "lightblue", "-n"
+                                   , "gray90", "-h", "red"] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Swap [] 10
+                    , Run Date "%a %b %_d %l:%M" "date" 10
+		    , Run DynNetwork [ "--template", "rx tx", "-S", "True" ] 10
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader% }{ %multicpu% %coretemp% | %memory% * %swap% | %dynnetwork% | <fc=#ee9a00>%date%</fc> | %LFPO%"
+       }
