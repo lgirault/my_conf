@@ -2,6 +2,7 @@ import Graphics.X11.ExtraTypes.XF86
 import XMonad
 import XMonad.Actions.UpdatePointer
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.ICCCMFocus
 import XMonad.Hooks.SetWMName
 import Data.Monoid
@@ -101,11 +102,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- screenshot
     , ((0, xK_Print ), spawn "gnome-screenshot" )
 
-    -- Music
-    -- , ((modm, xF86XK_AudioPlay  ), spawn "google-play-music-desktop-player")
-    -- , ((0, xF86XK_AudioMute         ), spawn "amixer set Master toggle")
-    -- , ((0, xF86XK_AudioRaiseVolume),   spawn "amixer set Master 2%+")
-    -- , ((0, xF86XK_AudioLowerVolume),   spawn "amixer set Master 2%-")
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
 
@@ -339,18 +335,49 @@ myEventHook = docksEventHook
 
 myStartupHook = setWMName "LG3D"
 
-myLogHook xmproc = dynamicLogWithPP xmobarPP {
-							ppOutput = hPutStrLn xmproc,
-                      	  	ppTitle = xmobarColor "green" "" . shorten 50
-                        	} >> updatePointer (0.5, 0.5) (0, 0) >> takeTopFocus
+-- myLogHook xmproc = dynamicLogWithPP xmobarPP {
+--							ppOutput = hPutStrLn xmproc,
+--                      	  	ppTitle = xmobarColor "green" "" . shorten 50
+--                        	} >> updatePointer (0.5, 0.5) (0, 0) >> takeTopFocus
+
+myBitmapsDir = "/home/lorilan/.xmonad/dzen2"
+
+myLogHook :: Handle -> Handle -> X ()
+myLogHook h h2 = dynamicLogWithPP $ defaultPP
+    {
+        ppCurrent           =   dzenColor "#ebac54" "#1B1D1E" . pad
+      , ppVisible           =   dzenColor "white" "#1B1D1E" . pad
+      , ppHidden            =   dzenColor "white" "#1B1D1E" . pad
+      , ppHiddenNoWindows   =   dzenColor "#7b7b7b" "#1B1D1E" . pad
+      , ppUrgent            =   dzenColor "#ff0000" "#1B1D1E" . pad
+      , ppWsSep             =   " "
+      , ppSep               =   "  |  "
+      , ppLayout            =   dzenColor "#ebac54" "#1B1D1E" .
+                                (\x -> case x of
+                                    "ResizableTall"             ->      "^i(" ++ myBitmapsDir ++ "/tall.xbm)"
+                                    "Mirror ResizableTall"      ->      "^i(" ++ myBitmapsDir ++ "/mtall.xbm)"
+                                    "Full"                      ->      "^i(" ++ myBitmapsDir ++ "/full.xbm)"
+                                    "Simple Float"              ->      "~"
+                                    _                           ->      x
+                                )
+      , ppTitle             =   (" " ++) . dzenColor "white" "#1B1D1E" . dzenEscape
+      , ppOutput            = \txt -> hPutStrLn h txt >> hPutStrLn h2 txt
+    }
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
+leftScreenWidth = 1920
+myLXmonadBar = "dzen2 -x '0' -y '0' -h '24' -w '640' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E' -dock"
+myRXmonadBar = "dzen2 -x '" ++ (show leftScreenWidth) ++ "' -y '0' -h '24' -w '640' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E' -dock"
+myStatusBar = "conky -c /home/lorilan/my_conf/conky_dzen | dzen2 -x '" ++ (show (leftScreenWidth + 1520)) ++ "' -w '1040' -h '24' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' -y '0'"
 main = do
-	xmproc <- spawnPipe "xmobar"
+        dzenRBar <- spawnPipe myRXmonadBar
+        dzenLBar <- spawnPipe myLXmonadBar
+        _ <- spawnPipe myStatusBar
+--	xmproc <- spawnPipe "xmobar"
 	xmonad defaultConfig {
       -- simple stuff
         terminal           = myTerminal,
@@ -371,7 +398,8 @@ main = do
         layoutHook         = myLayout,
         manageHook         = myManageHook,
         handleEventHook    = myEventHook,
-        logHook            = myLogHook xmproc,
+ --       logHook            = myLogHook xmproc,
+        logHook            = myLogHook dzenLBar dzenRBar >> fadeInactiveLogHook 0xdddddddd,
         startupHook        = myStartupHook
     }
 
