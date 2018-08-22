@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/lorilan/dev'
+let g:netrw_dirhist_2='/home/lorilan/dev/mics-build'
+let g:netrw_dirhist_3='/home/lorilan/dev/mics-build/mics-build'

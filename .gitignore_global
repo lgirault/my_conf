@@ -32,7 +32,6 @@
 # Logs and databases #
 ######################
 *.log
-*.sql
 *.sqlite
 
 
@@ -51,3 +50,9 @@ Thumbs.db
 
 #Intellij conf file
 *.iml
+
+.ensime
+.ensime_cache
+ensime.sbt
+.coursier
+.bloop
