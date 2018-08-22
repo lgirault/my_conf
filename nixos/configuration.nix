@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -33,13 +33,12 @@
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
-  nix.useSandbox = true;
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
    nixpkgs.config.allowUnfree = true;
    environment.systemPackages = with pkgs; [
      psmisc # contains killall
-     wget plymouth 
+     wget plymouth
      htop tree
 
      tmux unzip
@@ -47,34 +46,36 @@
      gnumake
      gmp
      gcc
-     vim atom
+     vim emacs
      #medias
-     gnome3.eog zathura vlc 
-     transmission_gtk
-     git  
+     gnome3.eog zathura vlc
+     gitAndTools.gitFull
      calibre
      zsh
      sbt
 
+     vagrant
+
      firefox
      #jdk
-     #jetbrains.jdk # openjdk fork that better supports jetbrains
-     pavucontrol
-     xscreensaver     
-     gmrun
+     jetbrains.jdk # openjdk fork that better supports jetbrains
+     #alsaUtils
+     #pavucontrol
+     xscreensaver
      dmenu
-     numlockx 
-     
-     gnome3.gnome-screenshot 
-  
-     redshift geoclue2 
-     ghc 
-     stack
+     numlockx
+
+     gnome3.gnome-screenshot
+
+     keychain
+     feh
+     redshift geoclue2
+     ghc
      haskellPackages.xmobar
      zlib
      udiskie
-     
-     xorg.xmodmap 
+
+     xorg.xmodmap
    ];
   programs.zsh.enable = true;
   # List services that you want to enable:
@@ -100,6 +101,11 @@
     layout = "fr";
     xkbVariant = "bepo";
   };
+
+  services.logind.extraConfig = "HandleSuspendKey=ignore";
+  
+  services.bloop.install = true;
+
   i18n.consoleUseXkbConfig = true;
   hardware.opengl.driSupport32Bit = true;
   sound = {
@@ -109,19 +115,26 @@
       volumeStep = "5";
     };
   };
-   
-  #hardware.pulseaudio.enable = true;
 
-  virtualisation.docker.enable = true;
- 
+  virtualisation = {
+	docker.enable = true;
+	virtualbox.host.enable = true;
+        virtualbox.host.enableHardening = false;	
+  };
   # Define a user account. Don't forget to set a password with ‘passwd’.
   #users.mutableUsers = false;
   users = {
+    extraUsers = 
+    let
+    	nixblds = lib.foldl addNixbldToDockerGroup {} (lib.range 1 config.nix.nrBuildUsers);
+    	addNixbldToDockerGroup = acc: idx: acc // { "nixbld${builtins.toString idx}".extraGroups = [ "nixbld" "docker" ]; };
+    in nixblds;
+
     users.lorilan = {
      createHome = true;
      home = "/home/lorilan/";
      isNormalUser = true;
-     extraGroups = [ "wheel" "plugdev" "docker" ];
+     extraGroups = [ "wheel" "plugdev" "docker" "vboxusers" ];
      uid = 1000;
      shell = pkgs.zsh;
     };
