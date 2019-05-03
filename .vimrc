@@ -10,6 +10,9 @@ set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
+" plugin for git commit
+Plug 'tpope/vim-fugitive' 
+Plug 'vmchale/dhall-vim'
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 " Plug 'junegunn/vim-easy-align'

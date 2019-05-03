@@ -56,3 +56,9 @@ Thumbs.db
 ensime.sbt
 .coursier
 .bloop
+
+.pants.d
+dist
+.pids
+.pants.workdir.file_lock
+*.pyc

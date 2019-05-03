@@ -200,7 +200,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- AZERTY fix
         -- | (key, sc) <- zip [xK_z, xK_e, xK_r] [1,0,2]
     -- BÉPO
-         | (key, sc) <- zip [xK_b, xK_eacute, xK_p] [1,0,2]
+         | (key, sc) <- zip [xK_b, xK_eacute, xK_p] [0, 1 ,2]
 
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
@@ -244,9 +244,10 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 
 -- smartBorders enleve les bord en plein écran
 --myLayout = avoidStruts $ noBorders tabbed ||| Grid
-myLayout =  (toggleLayouts $ noBorders Full) $ -- toggle fullscreen
-    avoidStruts $ smartBorders $ tiled ||| Mirror tiled ||| noBorders tabbed
---myLayout = avoidStruts ( smartBorders $ tiled ||| Mirror tiled ) ||| noBorders Full -- "true full"
+--myLayout =  (toggleLayouts $ noBorders Full) $ -- toggle fullscreen
+--    avoidStruts $ smartBorders $ tiled ||| Mirror tiled ||| noBorders tabbed
+myLayout = avoidStruts 
+        ( smartBorders $ tiled ||| Mirror tiled ||| noBorders Full ||| noBorders tabbed  ) -- ||| noBorders Full -- "true full"
   where
     -- default tiling algorithm partitions the screen into two panes
     tiled   = Tall nmaster delta ratio
@@ -371,9 +372,9 @@ myLogHook h h2 = dynamicLogWithPP $ defaultPP
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 leftScreenWidth = 1920
-myLXmonadBar = "dzen2 -x '0' -y '0' -h '24' -w '640' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E' -dock"
-myRXmonadBar = "dzen2 -x '" ++ (show leftScreenWidth) ++ "' -y '0' -h '24' -w '640' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E' -dock"
-myStatusBar = "conky -c /home/lorilan/my_conf/conky_dzen | dzen2 -x '" ++ (show (leftScreenWidth + 1520)) ++ "' -w '1040' -h '24' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' -y '0'"
+myLXmonadBar = "dzen2 -x '0' -y '0' -h '24' -w '1920' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E' -dock"
+myRXmonadBar = "dzen2 -x '" ++ (show leftScreenWidth) ++ "' -y '0' -h '24' -w '920' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E' -dock"
+myStatusBar = "conky -c /home/lorilan/my_conf/conky_dzen | dzen2 -x '" ++ (show (leftScreenWidth + 920)) ++ "' -w '1000' -h '24' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' -y '0'"
 main = do
         dzenRBar <- spawnPipe myRXmonadBar
         dzenLBar <- spawnPipe myLXmonadBar

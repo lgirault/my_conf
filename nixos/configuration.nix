@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      /etc/nixos/hardware-configuration.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -17,11 +17,6 @@
     efi.efiSysMountPoint = "/boot/efi";
   };
 
-  networking = {
-    hostName = "firebird"; # Define your hostname.
-    extraHosts = "127.0.0.1 firebird"; 
-  };
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Select internationalisation properties.
   # i18n = {
@@ -115,6 +110,12 @@
       volumeStep = "5";
     };
   };
+  
+  networking = {
+    hostName = "firebird"; # Define your hostname.
+    extraHosts = "127.0.0.1 firebird";
+  };
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   virtualisation = {
 	docker.enable = true;

@@ -1,5 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/lorilan/dev'
-let g:netrw_dirhist_2='/home/lorilan/dev/mics-build'
-let g:netrw_dirhist_3='/home/lorilan/dev/mics-build/mics-build'
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/lorilan/dev/mediarithmics-platform/mics-build'
+let g:netrw_dirhist_2='/home/lorilan/dev/mediarithmics-platform-2/.pants.d/ivy/jars/com.mediarithmics.pants/play-gen-tools'
+let g:netrw_dirhist_3='/home/lorilan/dev/mediarithmics-platform-2/.pants.d/ivy/jars/com.mediarithmics.pants/play-gen-tools/jars'
+let g:netrw_dirhist_4='/home/lorilan/dev/mediarithmics-platform-2/.pants.d/compile/ajc/a53b6931478d/core-platform-services.core-services.src.main.scala.scala/75398e08a5fc'
+let g:netrw_dirhist_5='/home/lorilan/dev/mediarithmics-platform-2/.pants.d/test/junit/_runs/c773f970fdf35d9c82c555f866314cf13c38b7e9/combined/all'
+let g:netrw_dirhist_6='/home/lorilan/dev/mediarithmics-platform-2/.pants.d/compile/zinc/a53b6931478d/libs.openapi-schema-extractor-srcs-sample.src.main.scala.scala/725b594d472d/classes'
+let g:netrw_dirhist_7='/home/lorilan/dev/mediarithmics-platform-2/.pants.d/compile/zinc/a53b6931478d/libs.openapi-schema-extractor-srcs-sample.src.main.scala.scala/725b594d472d/classes/META-INF'
+let g:netrw_dirhist_8='/home/lorilan/dev/mediarithmics-platform-2/.pants.d/compile/zinc/a53b6931478d/libs.openapi-schema-extractor-srcs-sample.src.main.scala.scala/725b594d472d/classes/META-INF/semanticdb'

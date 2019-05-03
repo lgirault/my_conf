@@ -17,3 +17,5 @@
 	hide-status = 1
 [rerere]
 	enabled = true
+[merge]
+	renamelimit = 6000

@@ -7,8 +7,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="agnoster-custom"
-ZSH_THEME="agnoster"
+ZSH_THEME="agnoster-custom"
+#ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -85,18 +85,6 @@ export VISUAL="vim"
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-#create ssh-agent if does not exist
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    ssh-agent > ~/.ssh-agent-thing
-fi
-if [[ "$SSH_AGENT_PID" == "" ]]; then
-    eval "$(<~/.ssh-agent-thing)"
-fi
-
-#setxkbmap -layout fr -variant bepo
-
-eval $(keychain --eval --quiet --nogui git_key)
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -113,6 +101,47 @@ alias viconf="sudo vim /etc/nixos/configuration.nix"
 
 #ssh-add ~/.ssh/git_key
 
-#export SBT_OPTS="-Dsbt.override.build.repos=true -Xms512M -Xmx5120M -Xss1M"
+export SBT_OPTS="-Dsbt.override.build.repos=true -Xms512M -Xmx5120M -Xss1M"
 
 export SBT_CREDENTIALS="$HOME/.ivy2/.credentials"
+
+export DEV_HOME="$HOME/dev"
+
+fd() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
+}
+
+fd2() {
+   DIR=`find * -maxdepth 0 -type d -print 2> /dev/null | fzf-tmux` \
+              && cd "$DIR"
+}
+
+
+export PAGER="less -FRX"
+
+alias hunt="ps -aux | grep "
+
+#create ssh-agent if does not exist
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent > ~/.ssh-agent-thing
+fi
+if [[ "$SSH_AGENT_PID" == "" ]]; then
+    eval "$(<~/.ssh-agent-thing)"
+fi
+
+#setxkbmap -layout fr -variant bepo
+
+
+local scalaMajor=2.12
+local scalaVersion=2.12.8
+local scalametaVersion=4.1.4
+alias metac="coursier launch org.scalameta:metac_${scalaVersion}:${scalametaVersion} -- -cp $(coursier fetch -p org.scala-lang:scala-library:${scalaVersion})"
+alias metacp="coursier launch org.scalameta:metacp_${scalaMajor}:${scalametaVersion} -- --dependency-classpath $(echo $JAVA_HOME/jre/lib/rt.jar):$(coursier fetch org.scala-lang:scala-library:${scalaVersion} -p)"
+alias metap="coursier launch org.scalameta:metap_${scalaMajor}:${scalametaVersion} --"
+
+eval $(keychain --eval --quiet --nogui github_work_rsa)
+
+
