@@ -98,7 +98,6 @@ export VISUAL="vim"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-JAVA_HOME="/nix/store/30nwnw9k70s8yfdd1bziwxnh5ybjp5rq-system-path/"
 
 alias viconf="sudo vim /etc/nixos/configuration.nix"
 #alias npm-build="npm run build"
@@ -106,7 +105,7 @@ alias viconf="sudo vim /etc/nixos/configuration.nix"
 
 #ssh-add ~/.ssh/git_key
 
-export SBT_OPTS="-Dsbt.override.build.repos=true -Xms512M -Xmx5120M -Xss1M"
+#export SBT_OPTS="-Dsbt.override.build.repos=true -Xms512M -Xmx5120M -Xss1M"
 
 export SBT_CREDENTIALS="$HOME/.ivy2/.credentials"
 
@@ -148,5 +147,4 @@ local scalametaVersion=4.1.4
 # alias metap="coursier launch org.scalameta:metap_${scalaMajor}:${scalametaVersion} --"
 
 eval $(keychain --eval --quiet --nogui github_rsa)
-
 

@@ -48,15 +48,19 @@ Thumbs.db
 # emacs temp
 *~
 
+#sbt
+**/target
+
 #Intellij conf file
 *.iml
-
+.idea
 .ensime
 .ensime_cache
 ensime.sbt
 .coursier
 .bloop
 
+#pants
 .pants.d
 dist
 .pids

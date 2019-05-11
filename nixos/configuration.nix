@@ -28,6 +28,9 @@
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
+  nix.useSandbox = false;
+  nix.sandboxPaths = [ "/var/run/docker.sock" ];
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
    nixpkgs.config.allowUnfree = true;
@@ -118,10 +121,11 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   virtualisation = {
-	docker.enable = true;
-	virtualbox.host.enable = true;
+  	docker.enable = true;
+  	virtualbox.host.enable = true;
         virtualbox.host.enableHardening = false;	
   };
+  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   #users.mutableUsers = false;
   users = {
