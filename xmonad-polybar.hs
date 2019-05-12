@@ -1,7 +1,7 @@
 -- IMPORT                                                                    {{{
 --------------------------------------------------------------------------------
 import XMonad
-
+import XMonad.Config.Gnome
 import XMonad.Actions.CycleWS
 import XMonad.Actions.DynamicProjects
 
@@ -215,6 +215,8 @@ myAdditionalKeys c = (subtitle "Custom Keys":) $ mkNamedKeymap c $
 
 myProgramKeys =
   [ ("M-z"        , addName "Open calendar & todo list" $ spawn "tilix -e vim ~/Dropbox/my_wiki/index.wiki")
+  , ("M-p"        , addName "Launcher" $ spawn "eval \"zsh -ci 'dmenu_run'\"" )
+  , ("M-S-q"      , addName "Exit" $ spawn "gnome-session-quit --logout --no-prompt" )
   , ("M-S-z"      , addName "Lock computer" $ spawn "~/dotfiles/scripts/lockscreen.sh")
   , ("M-s"        , addName "Open Steam" $ spawn "steam")
   , ("M-S-s"      , addName "Sleep" $ spawn "systemctl suspend")
@@ -307,6 +309,7 @@ myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
 -- STARTUPHOOK                                                               {{{
 --------------------------------------------------------------------------------
 myStartupHook = do
+  gnomeRegister
   setWMName "LG3D"
   spawn "$HOME/.config/polybar/launch.sh"
 
