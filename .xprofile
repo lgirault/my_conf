@@ -3,15 +3,15 @@
 # ~/.xinitrc
 #
 
-xrandr --output HDMI-0 --mode 2560x1440 --primary
-xrandr --output DVI-D-0 --left-of HDMI-0
+#xrandr --output HDMI-0 --mode 2560x1440 --primary
+#xrandr --output DVI-D-0 --left-of HDMI-0
 #xrandr --dpi 122
 
 #export XDG_CURRENT_DESKTOP=kde
 
-setxkbmap fr -variant bepo
+#setxkbmap fr -variant bepo
 #setxkbmap us -variant altgr-intl
-xmodmap ~/.ergodoxXmodmap
+#xmodmap ~/.ergodoxXmodmap
 #twmnd &
 udiskie -2 &
 xset s off

@@ -1,3 +1,8 @@
+
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+	source /etc/profile.d/vte.sh
+fi	
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -67,7 +72,7 @@ DEFAULT_USER=lorilan
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
-export PATH="/home/lorilan/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 export VISUAL="vim"
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -138,10 +143,10 @@ fi
 local scalaMajor=2.12
 local scalaVersion=2.12.8
 local scalametaVersion=4.1.4
-alias metac="coursier launch org.scalameta:metac_${scalaVersion}:${scalametaVersion} -- -cp $(coursier fetch -p org.scala-lang:scala-library:${scalaVersion})"
-alias metacp="coursier launch org.scalameta:metacp_${scalaMajor}:${scalametaVersion} -- --dependency-classpath $(echo $JAVA_HOME/jre/lib/rt.jar):$(coursier fetch org.scala-lang:scala-library:${scalaVersion} -p)"
-alias metap="coursier launch org.scalameta:metap_${scalaMajor}:${scalametaVersion} --"
+# alias metac="coursier launch org.scalameta:metac_${scalaVersion}:${scalametaVersion} -- -cp $(coursier fetch -p org.scala-lang:scala-library:${scalaVersion})"
+# alias metacp="coursier launch org.scalameta:metacp_${scalaMajor}:${scalametaVersion} -- --dependency-classpath $(echo $JAVA_HOME/jre/lib/rt.jar):$(coursier fetch org.scala-lang:scala-library:${scalaVersion} -p)"
+# alias metap="coursier launch org.scalameta:metap_${scalaMajor}:${scalametaVersion} --"
 
-eval $(keychain --eval --quiet --nogui github_work_rsa)
+eval $(keychain --eval --quiet --nogui github_rsa)
 
 
