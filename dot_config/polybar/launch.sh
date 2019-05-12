@@ -7,7 +7,7 @@ killall -q polybar
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
 # launch polybar
-if [ "$(hostname)" = "pcgish" ]
+if [ "$(hostname)" = "karas" ]
 then
   polybar desktop &
 else

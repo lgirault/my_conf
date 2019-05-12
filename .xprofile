@@ -3,17 +3,18 @@
 # ~/.xinitrc
 #
 
-randr --output HDMI-0 --mode 2560x1440 --primary
+xrandr --output HDMI-0 --mode 2560x1440 --primary
 xrandr --output DVI-D-0 --left-of HDMI-0
 #xrandr --dpi 122
 
 #export XDG_CURRENT_DESKTOP=kde
 
 #setxkbmap fr -variant bepo
-modmap ~/.ergodoxXmodmap
+xmodmap ~/.ergodoxXmodmap
 #twmnd &
 udiskie -2 &
-xset s off
+xset s off # screensaver off
+xset -b # disable system beep !!!
 numlockx on
 
 #feh --bg-fill .wallpaper.jpg

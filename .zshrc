@@ -146,5 +146,5 @@ local scalametaVersion=4.1.4
 # alias metacp="coursier launch org.scalameta:metacp_${scalaMajor}:${scalametaVersion} -- --dependency-classpath $(echo $JAVA_HOME/jre/lib/rt.jar):$(coursier fetch org.scala-lang:scala-library:${scalaVersion} -p)"
 # alias metap="coursier launch org.scalameta:metap_${scalaMajor}:${scalametaVersion} --"
 
-eval $(keychain --eval --quiet --nogui github_rsa)
+eval $(keychain --eval --quiet --nogui git_key)
 
