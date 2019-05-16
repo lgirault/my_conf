@@ -146,5 +146,12 @@ local scalametaVersion=4.1.4
 # alias metacp="coursier launch org.scalameta:metacp_${scalaMajor}:${scalametaVersion} -- --dependency-classpath $(echo $JAVA_HOME/jre/lib/rt.jar):$(coursier fetch org.scala-lang:scala-library:${scalaVersion} -p)"
 # alias metap="coursier launch org.scalameta:metap_${scalaMajor}:${scalametaVersion} --"
 
-eval $(keychain --eval --quiet --nogui git_key)
+function register_if_exists {
+  local keyname=$1
+  if [ -f $HOME/.ssh/${keyname} ]; then
+    eval $(keychain --eval --quiet --nogui ${keyname})
+  fi
+}
+register_if_exists git_key
+register_if_exists github_work_rsa
 

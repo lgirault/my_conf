@@ -3,11 +3,17 @@
 # ~/.xinitrc
 #
 
-xrandr --output HDMI-0 --mode 2560x1440 --primary
-xrandr --output DVI-D-0 --left-of HDMI-0
-#xrandr --dpi 122
+if [ "$HOST" = "karas" ]; then
+    echo "karas config selected"
+    xrandr --output HDMI-0 --mode 2560x1440 --primary
+    xrandr --output DVI-D-0 --left-of HDMI-0
+    #xrandr --dpi 122
+elif [ "$HOST" = "hyrule" ]; then
+   echo "hyrule config selected"
+   xrandr --output HDMI-1 --primary
+   xrandr --output DVI-D-1 --left-of HDMI-0
+fi
 
-#export XDG_CURRENT_DESKTOP=kde
 
 #setxkbmap fr -variant bepo
 xmodmap ~/.ergodoxXmodmap

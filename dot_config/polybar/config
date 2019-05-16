@@ -58,6 +58,7 @@ font-1 = SpaceMono Nerd Font Mono:fontformat=truetype:size=16:antialias=true;3
 font-2 = SpaceMono Nerd Font Mono:pixelsize=10;1
 font-3 = Siji:fontformat=truetype:size=12:antialias=true;1
 font-4 = FontAwesome:style=Regular:size=10:antialias=true;1
+font-5 = Unifont:style=Medium:size=10:antialias=true;1
 
 radius = 0.0
 fixed-center = false
@@ -79,6 +80,10 @@ monitor = ${env:MONITOR:HDMI-0}
 modules-left = xmonad
 modules-center = mpd
 modules-right = updates volume cpu memory date powermenu
+
+[bar/hyrule]
+inherit = bar/desktop
+monitor = ${env:MONITOR:HDMI-1}
 
 [bar/laptop]
 inherit = bar/base

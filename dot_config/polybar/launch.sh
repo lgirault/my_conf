@@ -7,9 +7,9 @@ killall -q polybar
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
 # launch polybar
-if [ "$(hostname)" = "karas" ]
+if [ "$(hostname)" = "hyrule" ]
 then
-  polybar desktop &
+  polybar hyrule &
 else
   if ! pgrep -x "nm-applet" >/dev/null
   then
