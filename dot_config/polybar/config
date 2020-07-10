@@ -102,7 +102,7 @@ tail = true
 
 [module/updates]
 type = custom/script
-exec = ~/.config/polybar/updates-arch-combined.sh
+exec = ~/.config/polybar/updates.sh
 interval = 600
 
 [module/xwindow]

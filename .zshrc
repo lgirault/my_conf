@@ -19,6 +19,7 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
 	source /etc/profile.d/vte.sh
 fi	
 
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -31,7 +32,6 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="powerlevel10k/powerlevel10k"
 #ZSH_THEME="agnoster-custom"
 #ZSH_THEME="agnoster"
-
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -89,7 +89,7 @@ DEFAULT_USER=lorilan
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
-export PATH="$HOME/.cargo/bin:$HOME/bin:$PATH"
+export PATH="$PATH:$HOME/bin:$HOME/.cargo/bin:$HOME/.local/bin"
 export VISUAL="vim"
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -158,9 +158,9 @@ fi
 #setxkbmap -layout fr -variant bepo
 
 
-local scalaMajor=2.12
-local scalaVersion=2.12.8
-local scalametaVersion=4.1.4
+#local scalaMajor=2.12
+#local scalaVersion=2.12.8
+#local scalametaVersion=4.1.4
 # alias metac="coursier launch org.scalameta:metac_${scalaVersion}:${scalametaVersion} -- -cp $(coursier fetch -p org.scala-lang:scala-library:${scalaVersion})"
 # alias metacp="coursier launch org.scalameta:metacp_${scalaMajor}:${scalametaVersion} -- --dependency-classpath $(echo $JAVA_HOME/jre/lib/rt.jar):$(coursier fetch org.scala-lang:scala-library:${scalaVersion} -p)"
 # alias metap="coursier launch org.scalameta:metap_${scalaMajor}:${scalametaVersion} --"

@@ -111,7 +111,6 @@ myFont = "xft:SpaceMono Nerd Font Mono:" ++ "fontformat=truetype:size=10:antiali
 -----------------------------------------------------------------------------}}}
 -- LAYOUT                                                                    {{{
 --------------------------------------------------------------------------------
--- legacy layout 
 myLayouts = avoidStruts
    (smartBorders $ myTile ||| Mirror myTile ||| noBorders Full ||| noBorders myTabbed )
 
@@ -239,8 +238,8 @@ myAdditionalKeys c = (subtitle "Custom Keys":) $ mkNamedKeymap c $
 myProgramKeys :: [(String, NamedAction)]
 myProgramKeys = 
   [ ("M-p"        , addName "Launcher" $ spawn "eval \"zsh -ci 'dmenu_run'\"" )
---  , ("M-S-q"      , addName "Exit" $ spawn "gnome-session-quit --logout --no-prompt" )
-  , ("M-S-q"     , addName "Quit" $ io (exitWith ExitSuccess)) -- %! Quit xmonad
+  , ("M-S-q"      , addName "Exit" $ io $ exitWith ExitSuccess )
+ -- , ("M-S-q"      , addName "Exit" $ spawn "gnome-session-quit --logout --no-prompt" )
  -- , ("M-z"        , addName "Open calendar & todo list" $ spawn "tilix -e vim ~/Dropbox/my_wiki/index.wiki")
  -- , ("M-s"        , addName "Open Steam" $ spawn "steam")
  -- , ("M-S-s"      , addName "Sleep" $ spawn "systemctl suspend")
@@ -410,8 +409,8 @@ myAddSpaces len str = sstr ++ replicate (len - length sstr) ' '
 -- STARTUPHOOK                                                               {{{
 --------------------------------------------------------------------------------
 myStartupHook = do
-  gnomeRegister
-  setWMName "LG3D"
+  -- gnomeRegister
+  --setWMName "LG3D"
   spawn "$HOME/.config/polybar/launch.sh"
 
 -----------------------------------------------------------------------------}}}

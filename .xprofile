@@ -6,7 +6,7 @@
 if [ "$HOST" = "karas" ]; then
     echo "karas config selected"
     xrandr --output HDMI-0 --mode 2560x1440 --primary
-    xrandr --output DVI-D-0 --left-of HDMI-0
+    #xrandr --output DVI-D-0 --left-of HDMI-0
     #xrandr --dpi 122
 elif [ "$HOST" = "lgt-pc" ]; then
    echo "hyrule config selected"
@@ -26,5 +26,6 @@ numlockx on
 #feh --bg-fill .wallpaper.jpg
 feh --bg-center .wallpaper.jpg
 insync start
+nextcloud &
 xscreensaver -no-splash &
 redshift -l 48.8567:2.3508 &
