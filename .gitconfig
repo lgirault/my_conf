@@ -13,6 +13,7 @@
         fap = fetch --all --prune
         prum = pull --rebase upstream master
         fix = clean -dfx
+	prus = pull --rebase upstream staging
 [oh-my-zsh]
 	hide-status = 1
 [rerere]

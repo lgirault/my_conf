@@ -66,3 +66,5 @@ dist
 .pids
 .pants.workdir.file_lock
 *.pyc
+
+nodes-*.yaml

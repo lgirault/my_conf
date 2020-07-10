@@ -81,7 +81,7 @@ modules-left = xmonad
 modules-center = mpd
 modules-right = updates volume cpu memory date powermenu
 
-[bar/hyrule]
+[bar/lgt-pc]
 inherit = bar/desktop
 monitor = ${env:MONITOR:HDMI-1}
 
@@ -204,7 +204,7 @@ ramp-load-0 = ▁
 format-prefix = "%{T2}%{T-} "
 format-prefix-foreground = ${colors.foreground}
 format-underline = ${colors.grey}
-label = %percentage-cores%
+label = %percentage-cores:40%
 
 [module/memory]
 type = internal/memory
@@ -302,10 +302,10 @@ menu-0-1-exec = menu-open-2
 menu-1-0 = cancel
 menu-1-0-exec = menu-open-0
 menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
+menu-1-1-exec = reboot
 
 menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
+menu-2-0-exec = shutdown 0
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 

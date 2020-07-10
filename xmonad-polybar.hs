@@ -239,7 +239,8 @@ myAdditionalKeys c = (subtitle "Custom Keys":) $ mkNamedKeymap c $
 myProgramKeys :: [(String, NamedAction)]
 myProgramKeys = 
   [ ("M-p"        , addName "Launcher" $ spawn "eval \"zsh -ci 'dmenu_run'\"" )
-  , ("M-S-q"      , addName "Exit" $ spawn "gnome-session-quit --logout --no-prompt" )
+--  , ("M-S-q"      , addName "Exit" $ spawn "gnome-session-quit --logout --no-prompt" )
+  , ("M-S-q"     , addName "Quit" $ io (exitWith ExitSuccess)) -- %! Quit xmonad
  -- , ("M-z"        , addName "Open calendar & todo list" $ spawn "tilix -e vim ~/Dropbox/my_wiki/index.wiki")
  -- , ("M-s"        , addName "Open Steam" $ spawn "steam")
  -- , ("M-S-s"      , addName "Sleep" $ spawn "systemctl suspend")
