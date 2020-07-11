@@ -78,12 +78,15 @@ inherit = bar/base
 monitor = ${env:MONITOR:HDMI-0}
 
 modules-left = xmonad
-modules-center = mpd
+;modules-center = mpd
 modules-right = updates volume cpu memory date powermenu
 
 [bar/lgt-pc]
 inherit = bar/desktop
 monitor = ${env:MONITOR:HDMI-1}
+
+[bar/karas]
+inherit = bar/desktop
 
 [bar/laptop]
 inherit = bar/base

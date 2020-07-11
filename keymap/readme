@@ -1,0 +1,19 @@
+replace
+/usr/share/X11/xkb/keycodes/symbols/fr
+with a symlink toward ./x_map_fr
+----------
+❯ cat /etc/X11/xorg.conf.d/00-keyboard.conf
+
+Section "InputClass"
+        Identifier "system-keyboard"
+        Option "XkbLayout" "fr"
+        Option "XkbVariant" "bepo"
+EndSection
+
+----------
+----------
+
+cat /etc/vconsole.conf
+KEYMAP=/usr/local/share/kbd/keymaps/fr-bepo-custom.map  
+
+don't know how to use custom  path for x 

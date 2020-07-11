@@ -3,21 +3,24 @@
 # ~/.xinitrc
 #
 
-if [ "$HOST" = "karas" ]; then
+host=$(cat /etc/hostname)
+echo debug > ~/start.log
+echo "host = $host"  >> ~/start.log
+#env >> ~/start.log
+
+if [ "$host" = "karas" ]; then
     echo "karas config selected"
     xrandr --output HDMI-0 --mode 2560x1440 --primary
     #xrandr --output DVI-D-0 --left-of HDMI-0
     #xrandr --dpi 122
-elif [ "$HOST" = "lgt-pc" ]; then
+elif [ "$host" = "lgt-pc" ]; then
    echo "hyrule config selected"
    xrandr --output HDMI-1 --primary
    xrandr --output DVI-D-1-1 --left-of HDMI-1
+   xscreensaver -no-splash &
 fi
 
 
-#setxkbmap fr -variant bepo
-#xmodmap ~/.ergodoxXmodmap
-#twmnd &
 udiskie -2 &
 xset s off # screensaver off
 xset -b # disable system beep !!!
@@ -27,5 +30,4 @@ numlockx on
 feh --bg-center .wallpaper.jpg
 insync start
 nextcloud &
-xscreensaver -no-splash &
 redshift -l 48.8567:2.3508 &

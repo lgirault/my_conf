@@ -145,7 +145,7 @@ export PAGER="less -FRX"
 
 alias hunt="ps -aux | grep "
 
-source /usr/share/nvm/init-nvm.sh
+#source /usr/share/nvm/init-nvm.sh
 
 #create ssh-agent if does not exist
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
