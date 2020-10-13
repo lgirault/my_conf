@@ -4,7 +4,7 @@ function register_if_exists {
     eval $(keychain --eval --quiet --nogui ${keyname})
   fi
 }
-register_if_exists git_key
+register_if_exists github_karas_rsa
 register_if_exists github_work_rsa
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -202,5 +202,3 @@ function br {
 export PATH=$PATH:~/.gem/bin:~/.local/bin
 export GEM_PATH=$(gem environment gempath)
 export GEM_HOME=~/.gem
-
-alias ovim=onivim

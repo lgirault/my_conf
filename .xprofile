@@ -18,6 +18,7 @@ elif [ "$host" = "lgt-pc" ]; then
    xrandr --output HDMI-1 --primary
    xrandr --output DVI-D-1-1 --left-of HDMI-1
    xscreensaver -no-splash &
+   insync start
 fi
 
 
@@ -28,6 +29,5 @@ numlockx on
 
 #feh --bg-fill .wallpaper.jpg
 feh --bg-center .wallpaper.jpg
-insync start
 nextcloud &
 redshift -l 48.8567:2.3508 &
