@@ -164,8 +164,9 @@ fi
 # alias metac="coursier launch org.scalameta:metac_${scalaVersion}:${scalametaVersion} -- -cp $(coursier fetch -p org.scala-lang:scala-library:${scalaVersion})"
 # alias metacp="coursier launch org.scalameta:metacp_${scalaMajor}:${scalametaVersion} -- --dependency-classpath $(echo $JAVA_HOME/jre/lib/rt.jar):$(coursier fetch org.scala-lang:scala-library:${scalaVersion} -p)"
 # alias metap="coursier launch org.scalameta:metap_${scalaMajor}:${scalametaVersion} --"
+export GITHUB_TOKEN=`cat ~/.pass/hub_token` 
 
-alias grep=rg
+#alias grep=rg
 alias real_find=/bin/find
 alias zz=7z
 #alias find=fzf
@@ -202,3 +203,4 @@ function br {
 export PATH=$PATH:~/.gem/bin:~/.local/bin
 export GEM_PATH=$(gem environment gempath)
 export GEM_HOME=~/.gem
+export VAGRANT_DEFAULT_PROVIDER=libvirt

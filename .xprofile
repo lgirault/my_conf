@@ -5,15 +5,15 @@
 
 host=$(cat /etc/hostname)
 echo debug > ~/start.log
-echo "host = $host"  >> ~/start.log
+echo "host = $HOST"  >> ~/start.log
 #env >> ~/start.log
 
-if [ "$host" = "karas" ]; then
+if [ "$HOST" = "karas" ]; then
     echo "karas config selected"
     xrandr --output HDMI-0 --mode 2560x1440 --primary
     #xrandr --output DVI-D-0 --left-of HDMI-0
     #xrandr --dpi 122
-elif [ "$host" = "lgt-pc" ]; then
+elif [ "$HOST" = "lgt-pc" ]; then
    echo "hyrule config selected"
    xrandr --output HDMI-1 --primary
    xrandr --output DVI-D-1-1 --left-of HDMI-1
@@ -22,6 +22,10 @@ elif [ "$host" = "lgt-pc" ]; then
 fi
 
 
+xrandr --output HDMI-1 --mode 2560x1440 --primary --left-of DVI-D-1
+#setxkbmap fr -variant bepo
+#xmodmap ~/.ergodoxXmodmap
+#twmnd &
 udiskie -2 &
 xset s off # screensaver off
 xset -b # disable system beep !!!
