@@ -165,7 +165,7 @@ fi
 # alias metacp="coursier launch org.scalameta:metacp_${scalaMajor}:${scalametaVersion} -- --dependency-classpath $(echo $JAVA_HOME/jre/lib/rt.jar):$(coursier fetch org.scala-lang:scala-library:${scalaVersion} -p)"
 # alias metap="coursier launch org.scalameta:metap_${scalaMajor}:${scalametaVersion} --"
 export GITHUB_TOKEN=`cat ~/.pass/hub_token` 
-
+export GITHUB_PACKAGES_TOKEN=`cat ~/.pass/github_packages_token`
 #alias grep=rg
 alias real_find=/bin/find
 alias zz=7z
@@ -204,3 +204,10 @@ export PATH=$PATH:~/.gem/bin:~/.local/bin
 export GEM_PATH=$(gem environment gempath)
 export GEM_HOME=~/.gem
 export VAGRANT_DEFAULT_PROVIDER=libvirt
+export BAZEL_NETRC=~/.netrc
+
+export SYSTEMD_EDITOR=vim
+#And then sudo visudo and add this line:
+# Defaults  env_keep += "SYSTEMD_EDITOR"
+
+

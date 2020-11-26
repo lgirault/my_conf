@@ -351,7 +351,7 @@ myInitialKeys conf@(XConfig {XMonad.modMask = modm}) =
    subtitle "switching screens" :
    [((m .|. modm, key), addName (n ++ show sc) $ screenWorkspace sc >>= flip whenJust (windows . f))
         | (f, m, n) <- [(W.view, 0, "Switch to screen number "), (W.shift, shiftMask, "Move client to screen number ")]
-        , (key, sc) <- zip screenKeys [0,1,2]]
+        , (key, sc) <- zip screenKeys [1,0,2]]
    where
         -- (workspaceKeys, screenKeys) = ([xK_1 .. xK_9] ++ [xK_0], [xK_w, xK_e, xK_r]) -- QWERTY
         (workspaceKeys, screenKeys) = ([0x22,0x3c,0x3e,0x28,0x29,0x40,0x2b,0x2d,0x2f,0x2a], [xK_b, xK_eacute, xK_p])     -- BÉPO 
