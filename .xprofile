@@ -21,18 +21,20 @@ elif [ "$host" = "lgt-pc" ]; then
    xrandr --output HDMI-1 --mode 2560x1440 --primary --right-of DVI-D-1
    #xscreensaver -no-splash &
    insync start
+elif [ "$host" = "lgt-port" ]; then
+   nm-applet &
 fi
+
 
 
 #setxkbmap fr -variant bepo
 #xmodmap ~/.ergodoxXmodmap
 #twmnd &
-udiskie -2 &
+#udiskie -2 &
 xset s off # screensaver off
 xset -b # disable system beep !!!
 numlockx on
 
 #feh --bg-fill .wallpaper.jpg
-feh --bg-center .wallpaper.jpg
-nextcloud &
-redshift -l 48.8567:2.3508 &
+#feh --bg-center .wallpaper.jpg
+#redshift -l 48.8567:2.3508 &

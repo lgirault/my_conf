@@ -14,9 +14,12 @@
         prum = pull --rebase upstream master
         fix = clean -dfx
 	prus = pull --rebase upstream staging
+	mics-build =  "!f() { git fetch upstream; git describe --tag --contains $(git rev-list upstream/master --grep \"$1\"); }; f"
 [oh-my-zsh]
 	hide-status = 1
 [rerere]
 	enabled = true
 [merge]
 	renamelimit = 6000
+[checkout]
+	defaultRemote = origin
