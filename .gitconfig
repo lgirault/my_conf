@@ -4,10 +4,11 @@
 [push]
 	default = current
 [core]
-	excludesfile = /home/lorilan/.gitignore_global
-	excludesfiles = /home/lorilan/.gitignore_global
+	excludesfile = ~/.gitignore_global
+	excludesfiles = ~/.gitignore_global
 	editor = vim
 [alias]
+	origin-delete = push origin --delete
 	tree = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
         tree-fat = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n'' %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
         fap = fetch --all --prune
@@ -15,11 +16,11 @@
         fix = clean -dfx
 	prus = pull --rebase upstream staging
 	mics-build =  "!f() { git fetch upstream; git describe --tag --contains $(git rev-list upstream/master --grep \"$1\"); }; f"
-[oh-my-zsh]
-	hide-status = 1
 [rerere]
 	enabled = true
 [merge]
 	renamelimit = 6000
 [checkout]
 	defaultRemote = origin
+[init]
+	defaultBranch = main

@@ -60,24 +60,6 @@ xkb_symbols "olpc" {
 };
 
 partial alphanumeric_keys
-xkb_symbols "Sundeadkeys" {
-
-    // Modifies the basic French layout to use the Sun dead keys
-
-    include "fr(basic)"
-
-    key <AD11>	{ [dead_circumflex, dead_diaeresis ]	};
-    key <AB07>	{ [comma,   question,  dead_acute, dead_doubleacute ]	};
-};
-
-partial alphanumeric_keys
-xkb_symbols "sundeadkeys" {
-    include "fr(Sundeadkeys)"
-
-    name[Group1]="French (Sun dead keys)";
-};
-
-partial alphanumeric_keys
 xkb_symbols "nodeadkeys" {
 
     // Modifies the basic French layout to eliminate all dead keys
@@ -226,29 +208,6 @@ xkb_symbols "oss_latin9" {
     key <AB08>  { [        semicolon,           period,             multiply,        periodcentered ] }; // ; . × ·
     key <AB09>  { [            colon,            slash,             division,                 slash ] }; // : / ÷ /
     key <AB10>  { [           exclam,          section,           exclamdown,                 minus ] }; // ! § ¡ -
-};
-
-partial alphanumeric_keys
-xkb_symbols "oss_Sundeadkeys" {
-
-    // Modifies the basic fr(oss) layout to use the Sun dead keys
-
-    include "fr(oss)"
-
-    key <TLDE>	{ [      twosuperior,    threesuperior,          onesuperior,          dead_cedilla ] }; // ¹ ² ³ ¸
-
-    key <AD11>	{ [  dead_circumflex,   dead_diaeresis,           dead_tilde,        dead_abovering ] }; // ^ ̈ ̃ ˚
-
-    key <AC11>	{ [           ugrave,          percent,           dead_acute,                Ugrave ] }; // ù % ' Ù
-    key <BKSL>	{ [         asterisk,               mu,           dead_grave,           dead_macron ] }; // * µ ` ̄
-};
-
-partial alphanumeric_keys
-xkb_symbols "oss_sundeadkeys" {
-
-    include "fr(oss_Sundeadkeys)"
-
-    name[Group1]="French (alt., Sun dead keys)";
 };
 
 partial alphanumeric_keys
@@ -403,26 +362,6 @@ xkb_symbols "latin9" {
 };
 
 partial alphanumeric_keys
-xkb_symbols "latin9_Sundeadkeys" {
-
-    // Modifies the basic fr-latin9 layout to use the Sun dead keys
-
-    include "fr(latin9)"
-
-    key <AE01>	{ [       ampersand,               1,         dead_acute,       periodcentered ] };
-    key <AE07>	{ [          egrave,               7,         dead_grave,               Egrave ] };
-    key <AD11>	{ [ dead_circumflex,  dead_diaeresis,         dead_tilde,           apostrophe ] };
-};
-
-partial alphanumeric_keys
-xkb_symbols "latin9_sundeadkeys" {
-
-    include "fr(latin9_Sundeadkeys)"
-
-    name[Group1]="French (legacy, alt., Sun dead keys)";
-};
-
-partial alphanumeric_keys
 xkb_symbols "latin9_nodeadkeys" {
 
     // Modifies the basic fr-latin9 layout to eliminate all dead keys
@@ -451,7 +390,7 @@ xkb_symbols "latin9_nodeadkeys" {
 //
 // ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┲━━━━━━━━━┓
 // │ # ¶ │ 1 „ │ 2 “ │ 3 ” │ 4 ≤ │ 5 ≥ │ 6   │ 7 ¬ │ 8 ¼ │ 9 ½ │ 0 ¾ │ ° ′ │ ` ″ ┃ ⌫ Retour┃
-// │ $ – │ " — │ « < │ » > │ ( [ │ ) ] │ @ ^ │ + ± │ - − │ / ÷ │ * × │ = ≠ │ % ‰ ┃  arrière┃
+// │ $ – │ " — │ < « │ > » │ ( [ │ ) ] │ @ ^ │ + ± │ - − │ / ÷ │ * × │ = ≠ │ % ‰ ┃  arrière┃
 // ┢━━━━━┷━┱───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┺━┳━━━━━━━┫
 // ┃       ┃ B ¦ │ É ˝ │ P § │ O Œ │ È ` │ !   │ V   │ D Ð │ L   │ J Ĳ │ Z Ə │ W   ┃Entrée ┃
 // ┃Tab ↹  ┃ b | │ é ˊ │ p & │ o œ │ è ` │ ˆ ¡ │ v ˇ │ d ð │ l / │ j ĳ │ z ə │ w ̆  ┃   ⏎   ┃
@@ -478,8 +417,8 @@ xkb_symbols "bepo" {
     key <AE01> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [        quotedbl,            1,         emdash, doublelowquotemark ] }; // " 1 — „
     key <AE02> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [            less,            2,  guillemotleft,  leftdoublequotemark ] }; // « 2 < “
     key <AE03> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [         greater,            3, guillemotright, rightdoublequotemark ] }; // » 3 > ”
-    key <AE04> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [       parenleft,            4,    bracketleft,      braceleft ] }; // ( 4 [ {
-    key <AE05> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [      parenright,            5,   bracketright,     braceright ] }; // ) 5 ] }
+    key <AE04> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [       parenleft,            4,    bracketleft,      lessthanequal ] }; // ( 4 [ ≤
+    key <AE05> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [      parenright,            5,   bracketright,   greaterthanequal ] }; // ) 5 ] ≥
     key <AE06> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [              at,            6,    asciicircum                 ] }; // @ 6 ^
     key <AE07> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [            plus,            7,      plusminus,        notsign ] }; // + 7 ± ¬
     key <AE08> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [           minus,            8,          U2212,     onequarter ] }; // - 8 − ¼
@@ -519,8 +458,8 @@ xkb_symbols "bepo" {
     // Fourth row
     key <LSGT> { [     ecircumflex,  Ecircumflex,          slash                 ] }; // ê Ê /
     key <AB01> { [          agrave,       Agrave,      backslash                 ] }; // à À \
-    key <AB02> { [               y,            Y,      lessthanequal, leftsinglequotemark  ] }; // y Y ≤ ‘
-    key <AB03> { [               x,            X,     greaterthanequal, rightsinglequotemark ] }; // x X ≥ ’
+    key <AB02> { [               y,            Y,      braceleft, leftsinglequotemark  ] }; // y Y { ‘
+    key <AB03> { [               x,            X,     braceright, rightsinglequotemark ] }; // x X } ’
     key <AB04> { [          period,        colon,       ellipsis, periodcentered ] }; // . : … ·
     key <AB05> { [               k,            K,     asciitilde                 ] }; // k K ~
     key <AB06> { [      apostrophe,     question,   questiondown,      dead_hook ] }; // ' ? ¿ ̉
@@ -529,8 +468,8 @@ xkb_symbols "bepo" {
     key <AB09> { [               h,            H,         dagger,   doubledagger ] }; // h H † ‡
     key <AB10> { [               f,            F,    dead_ogonek,    ordfeminine ] }; // f F ̨ ª
 
-    // key <SPCE> { [           space, nobreakspace,     underscore,          U202F ] }; // ␣ (espace insécable) _ (espace insécable fin)
-    key <SPCE> { [           space, space,     underscore,          U202F ] }; // ␣ (espace insécable) _ (espace insécable fin)
+    key <SPCE> { [           space,        space,     underscore,          U202F ] }; // ␣ ␣ _ (espace insécable fin)
+    // key <SPCE> { [        space, nobreakspace,     underscore,          U202F ] }; // ␣ (espace insécable) _ (espace insécable fin)
 };
 
 partial alphanumeric_keys
@@ -1063,7 +1002,6 @@ xkb_symbols "geo" {
     key <AB08> { [ Georgian_shin,  S              ] };
     key <AB09> { [ Georgian_ghan,  noSymbol       ] };
     key <AB10> { [ Georgian_char,  noSymbol       ] };
-
 };
 
 // US keyboard made French
@@ -1089,7 +1027,7 @@ xkb_symbols "us" {
     key <AC06> { [	   h,          H,    udiaeresis,       Udiaeresis ] }; // ü Ü
     key <AC07> { [	   j,          J,   ucircumflex,      Ucircumflex ] }; // û Û
     key <AC08> { [	   k,          K,   icircumflex,      Icircumflex ] }; // î Î
-    key <AC11> { [apostrophe,   quotedbl,dead_diaeresis                   ] };
+    key <AC11> { [apostrophe,   quotedbl,dead_diaeresis,           degree ] };
 
     key <AD03> { [	   e,          E,        eacute,           Eacute ] }; // é É
     key <AD04> { [	   r,          R,        egrave,           Egrave ] }; // è È
@@ -1220,7 +1158,6 @@ xkb_symbols "us-alt" {
     key <TLDE> { [dead_grave, asciitilde,         grave ] };
     key <AE06> { [dead_circumflex, asciicircum,       6 ] };
     key <AE04> { [         4,     dollar,      EuroSign,         currency ] }; // € ¤
-
 };
 
 // For physically modified US keyboard (Q <-> A, W <-> Z and ; <-> M)

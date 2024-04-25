@@ -1,5 +1,7 @@
-replace
-/usr/share/X11/xkb/keycodes/symbols/fr
+replace one of the following : 
+- /usr/share/X11/xkb/keycodes/symbols/fr
+- /usr/share/X11/xkb/symbols/fr
+
 with a symlink toward ./x_map_fr
 ----------
 ❯ cat /etc/X11/xorg.conf.d/00-keyboard.conf

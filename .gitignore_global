@@ -54,17 +54,19 @@ Thumbs.db
 #Intellij conf file
 *.iml
 .idea
-.ensime
-.ensime_cache
-ensime.sbt
+
 .coursier
 .bloop
+.bsp
+.metals
+.vscode
+cache
+project
 
 #pants
-.pants.d
 dist
-.pids
-.pants.workdir.file_lock
-*.pyc
+.pyc
 
 nodes-*.yaml
+package.json
+*.gitignore

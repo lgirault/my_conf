@@ -166,6 +166,7 @@ screen.connect_signal("property::geometry", set_wallpaper)
 
 local cpu_widget = require("widgets.cpu-widget.cpu-widget")
 local ram_widget = require("widgets.ram-widget.ram-widget")
+local battery_widget = require("battery-widget"){}
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
@@ -219,6 +220,7 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
+	    battery_widget,
         },
     }
 end)
@@ -281,6 +283,8 @@ globalkeys = gears.table.join(
     -- Standard program
     awful.key({ modkey, "Control"   }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
+    awful.key({ modkey, "Control"   }, "l",      function () awful.spawn("xscreensaver-command --lock") end,
+              {description="xscreensaver", group="launcher"}),          
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
@@ -341,7 +345,7 @@ clientkeys = gears.table.join(
             c:raise()
         end,
         {description = "toggle fullscreen", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
+    awful.key({ modkey, "Shift"   }, "w",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),

@@ -89,7 +89,6 @@ DEFAULT_USER=lorilan
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
-export PATH="$PATH:$HOME/bin:$HOME/.cargo/bin:$HOME/.local/bin"
 export VISUAL="vim"
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -126,7 +125,8 @@ alias viconf="sudo vim /etc/nixos/configuration.nix"
 
 export SBT_CREDENTIALS="$HOME/.ivy2/.credentials"
 
-export DEV_HOME="$HOME/dev"
+export DEV_HOME="$HOME/dev/mediarithmics"
+export TEST_TMPDIR="$DEV_HOME/.bazel_cache"
 
 fd() {
   local dir
@@ -200,14 +200,29 @@ function br {
     eval "$d"
 }
 
-export PATH=$PATH:~/.gem/bin:~/.local/bin
-export GEM_PATH=$(gem environment gempath)
-export GEM_HOME=~/.gem
+export PATH=~/.pyenv/shims:~/bin:~/.cargo/bin:~/.local/bin:~/go/bin:/home/lgirault/.local/share/coursier/bin:$PATH
+export PATH=~/dev/depot_tools:$PATH
+source ~/.rvm/scripts/rvm
+
 export VAGRANT_DEFAULT_PROVIDER=libvirt
 export BAZEL_NETRC=~/.netrc
+export XDG_CURRENT_DESKTOP=kde #makes icons work in dolphin
 
 export SYSTEMD_EDITOR=vim
 #And then sudo visudo and add this line:
 # Defaults  env_keep += "SYSTEMD_EDITOR"
+alias manfr="LANG=fr_FR.UTF-8 man"
+
+POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+source /usr/share/nvm/init-nvm.sh
+
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+export JAVA_11_HOME=/usr/lib/jvm/java-11-openjdk
+
+export MICS_PROD_USER=lgirault
+export MICS_SSH_PRIVATE_KEY=/home/lgirault/.ssh/mics_prod_2023-06-21
 
 
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
